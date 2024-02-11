@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'global.css' %}">
+    <!--link rel="stylesheet" href="{% static 'projetDjango/css/main.css' %}"-->
+    <title>Document</title>
+</head>
+<body>
+    <h1 >Bienvenu sur ma page web !</h1>
+    <p>{{message}}</p>
+    {% comment "ce passage est un commentaire par conséquent elle ne vas pas apparaître dans le code html"%}
+    
+    
+    <h2>Bonjour</h2>
+    {% lorem 255 w %}
+    {% now "d/m/Y " %}
+    {% now  "H:i:s" %}
+    {% now  "l F" %}
+    {% endcomment %}
+
+    <h2>Contenu d'un autre fichier</h2>
+    {% include './other.html'%}
+        {% if Number > 0 %}
+             <p>Des news sont disponibles !</p>
+        {% else %}
+             <p>Pas de news disponibles...</p>
+        {% endif %}
+         
+        {% for el in list %}
+        <p>{{el}}</p>
+        {% empty %}
+        <p>Pas d'utlisateur...</p>
+        {% endfor %}
+
+        <p>{{message | length}}</p>
+        <p>{{message | length_is:14 }}</p>
+        <p>{{message | wordcount}}</p>
+        <p>{{message | upper}}</p>
+        <p>{{message | lower}}</p>
+        <h4>Nous somme le {{publication|date:'d/m/y'}}</h4>
+        <h4>Il est {{publication|time:'H\h i' }} min</h4>
+        <h3>{{username|default:"Anonyme"}}</h3>
+        <h4>{{description|truncatechars:25}}</h4>
+        <h4>{{description|truncatewords:5}}</h4>
+        <h4>{{list2|random}}</h4>
+        <h4>{{numberOfNews}} actualité{{numberOfNews|pluralize}}</h4>
+        <h4>{{numberOfNews}} commut{{numberOfNews|pluralize:"y,ies"}}</h4>
+
+</body>
+</html>
